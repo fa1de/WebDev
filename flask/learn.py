@@ -10,6 +10,7 @@ def index():    # ex)random.random() : 모듈.함수(.모듈이 갖고있는 함
     <html>
         <body>
             <h1><a href="/">Main</a></h1>
+            <h2><a href="/create/">Create</a></h2>
         </body>
     </html>
     '''  # '''는 여러줄의 문자열 정의를 위해 사용 : 트리플 쿼트
@@ -17,8 +18,8 @@ def index():    # ex)random.random() : 모듈.함수(.모듈이 갖고있는 함
 def create():
     return 'Create'
 
-#@app.route('/user/<username>')    username에 따른 페이지
-#def 함수명(username):
+#@app.route('/user/<username>')   #username에 따른 페이지
+#def 함수명(username):             #<username> -> 여기 받는 파라미터 값이 username으로 들어감
 #    return 'hi'+username  
 
 
