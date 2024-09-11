@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, redirect
 
 app = Flask(__name__)
 
@@ -49,7 +49,7 @@ def read(id):
 
 @app.route('/create/', methods=['GET','POST'])   # GET 방식만 받는 라우트, methods 지정
 def create():
-    if (request.method==GET):
+    if (request.method == 'GET'):
         content = '''
             <form action="/create/" method="POST">
                 <p><input type="text" name="title" placeholder="title"><p> 
@@ -65,15 +65,14 @@ def create():
         return templates(getcontents(), content)
     
     elif (request.method == 'POST'):
-        global nextId
+        global nextId     # 전역변수 설정
         title = request.form['title']
         body = request.form['body']
         newtopic = {"id" : nextId, "title": title, "body": body}
         topics.append(newtopic)
-        
+        url = '/read/'+str(nextId)+'/' #'/read/'+nextId로 하면 문자열+숫자가 되기에 str을 씌움
         nextId = nextId + 1
-        
-        return title+','+body
+        return redirect(url) # redirect를 임포트해서 매핑된 url로 리다이렉트
 
 
 app.run(debug=True)
