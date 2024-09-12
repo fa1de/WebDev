@@ -2,11 +2,11 @@ from flask import Flask, request, redirect
 
 app = Flask(__name__)
 
-nextId = 4
 topics = [{"id" : 1, "title" : "html", "body" : "Html is~"},
          {"id" : 2, "title" : "CSS", "body" : "CSS is~"},
          {"id" : 3, "title" : "JavaScript", "body" : "JS is~"}
         ]
+nextId = 4
 
 def templates(contents, content):
     return f'''  
